@@ -1,9 +1,7 @@
 'use strict'
+const { gql } = require('apollo-server-express')
 
-const { makeExecutableSchema } = require('graphql-tools')
-const resolvers = require('./resolvers')
-
-const typeDefs = `
+const typeDefs = gql`
   type GeoPoints {
     id: ID!
     latitude: Float
@@ -38,4 +36,4 @@ const typeDefs = `
   }
 `
 
-module.exports = makeExecutableSchema({ typeDefs, resolvers })
+module.exports = typeDefs
