@@ -1,13 +1,13 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
-  const geoPoints = sequelize.define('GeoPoints', {
+  const GeoPoints = sequelize.define('GeoPoints', {
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT,
     altitude: DataTypes.FLOAT,
     time: DataTypes.STRING
   }, {})
-  geoPoints.associate = function (models) {
-    geoPoints.belongsTo(models.Plants)
+  GeoPoints.associate = function (models) {
+    GeoPoints.hasMany(models.Plants)
   }
-  return geoPoints
+  return GeoPoints
 }

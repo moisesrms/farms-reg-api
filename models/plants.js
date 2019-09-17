@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {})
   Plants.associate = function (models) {
-    // Plants.hasMany(models.geoPoints)
+    Plants.belongsTo(models.GeoPoints)
   }
   return Plants
 }
