@@ -9,12 +9,12 @@ require('dotenv').config()
 const resolvers = {
   Query: {
     async allGeoPoints () {
-      const geoPoints = await GeoPoints.all()
+      const geoPoints = await GeoPoints.findAll()
       return geoPoints
     },
 
     async allPlants () {
-      const plants = await Plants.all()
+      const plants = await Plants.findAll()
       return plants
     }
   },
