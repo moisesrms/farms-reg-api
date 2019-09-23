@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      geoPoint: {
+      GeoPointId: {
         type: Sequelize.INTEGER
       },
       name: {

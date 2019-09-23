@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     time: DataTypes.STRING
   }, {})
   GeoPoints.associate = function (models) {
-    GeoPoints.hasMany(models.Plants)
+    GeoPoints.hasOne(models.Plants)
   }
   return GeoPoints
 }
