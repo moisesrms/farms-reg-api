@@ -12,7 +12,7 @@ const typeDefs = gql`
 
   type Plants {
     id: ID!
-    geoPoint: Float
+    GeoPointId: Float
     name: String
   }
 
@@ -25,7 +25,14 @@ const typeDefs = gql`
     ): GeoPoints
 
     addPlants (
-      geoPoint: Float,
+      GeoPointId: Float,
+      name: String
+    ): Plants
+
+    addPlantWithGeoPoint (
+      latitude: Float,
+      longitude: Float,
+      altitude: Float,
       name: String
     ): Plants
   }

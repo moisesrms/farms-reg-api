@@ -36,14 +36,41 @@ const resolvers = {
     },
 
     async addPlants (_, {
-      geoPoint,
+      GeoPointId,
       name
     }) {
       const plant = await Plants.create({
-        geoPoint,
+        GeoPointId,
         name
       })
       return plant
+    },
+
+    async addPlantWithGeoPoint (_, {
+      latitude,
+      longitude,
+      altitude,
+      name
+    }) {
+      const now = new Date()
+      const time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
+
+      const geoPoint = await GeoPoints.create({
+        latitude,
+        longitude,
+        altitude,
+        time
+      })
+
+      if (geoPoint != null) {
+        const GeoPointId = geoPoint.id
+        const plant = await Plants.create({
+          GeoPointId,
+          name
+        })
+        return plant
+      }
+      return null
     }
   }
 }
