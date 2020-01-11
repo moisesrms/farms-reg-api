@@ -2,7 +2,9 @@
 
 const {
   GeoPoints,
-  Plants
+  Plants,
+  Beds,
+  BedsGeopoints
 } = require('../models')
 require('dotenv').config()
 
@@ -16,6 +18,16 @@ const resolvers = {
     async allPlants () {
       const plants = await Plants.findAll()
       return plants
+    },
+
+    async allBeds () {
+      const beds = await Beds.findAll()
+      return beds
+    },
+
+    async allBedsGeopoints () {
+      const bedsGeopoints = await BedsGeopoints.findAll()
+      return bedsGeopoints
     }
   },
 
@@ -71,6 +83,25 @@ const resolvers = {
         return plant
       }
       return null
+    }
+  },
+
+  Plants: {
+    async geoPoint (plants) {
+      const geoPoint = await plants.getGeoPoint()
+      return geoPoint
+    }
+  },
+
+  BedsGeopoints: {
+    async geoPoint (bedsGeopoints) {
+      const geoPoint = await bedsGeopoints.getGeoPoint()
+      return geoPoint
+    },
+
+    async bed (bedsGeopoints) {
+      const bed = await bedsGeopoints.getBed()
+      return bed
     }
   }
 }

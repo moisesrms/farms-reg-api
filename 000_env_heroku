@@ -1,0 +1,6 @@
+NODE_ENV=development
+DB_HOST=eu-cdbr-west-02.cleardb.net
+DB_USERNAME=ba5429943a5aba
+DB_PASSWORD=2194c9c6
+DB_NAME=heroku_ce3731ce03343dd
+ORIGIN=*

@@ -14,6 +14,20 @@ const typeDefs = gql`
     id: ID!
     GeoPointId: Float
     name: String
+    geoPoint: GeoPoints
+  }
+
+  type Beds {
+    id: ID!
+    name: String
+    geoPoint: GeoPoints
+  }
+ 
+  type BedsGeopoints {
+    BedId: Int!
+    GeoPointId: Int!
+    geoPoint: GeoPoints
+    bed: Beds
   }
 
   type Mutation {
@@ -39,7 +53,9 @@ const typeDefs = gql`
 
   type Query {
     allGeoPoints: [GeoPoints],
-    allPlants: [Plants]
+    allPlants: [Plants],
+    allBeds: [Beds]
+    allBedsGeopoints: [BedsGeopoints]
   }
 `
 
