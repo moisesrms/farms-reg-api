@@ -3,8 +3,8 @@ const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
 const typeDefs = require('./graphql/schema')
 const resolvers = require('./graphql/resolvers')
-const fs = require('fs')
-const https = require('https')
+// const fs = require('fs')
+// const https = require('https')
 require('dotenv').config()
 
 const apollo = new ApolloServer({
@@ -17,13 +17,15 @@ const apollo = new ApolloServer({
 const app = express()
 apollo.applyMiddleware({ app })
 
-var server = https.createServer(
+var server = app
+
+/* var server = https.createServer(
   {
     key: fs.readFileSync('ssl/server.key'),
     cert: fs.readFileSync('./ssl/server.cert')
   },
   app
-)
+) */
 
 apollo.installSubscriptionHandlers(server)
 
