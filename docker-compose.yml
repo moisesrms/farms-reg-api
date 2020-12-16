@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:8.0.19
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+  api:
+    container_name: farms-reg-api-container
+    build: .
+    image: api
+    command: npm run dev:watch
+    ports:
+      - ${PORT}:${PORT}
+    volumes: 
+        - ./:/src/
+        - nodemodules:/src/node_modules
+    links: 
+        - mysql
+    depends_on: 
+        - mysql
+volumes: 
+    nodemodules: {}
+    db-data:
