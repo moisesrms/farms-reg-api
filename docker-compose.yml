@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD}
   migrate:
     build: .
-    entrypoint: npm run db:init
+    entrypoint: yarn db:init
     volumes:
       - ./:/src/
       - nodemodules:/src/node_modules
@@ -26,7 +26,7 @@ services:
     container_name: farms-reg-api-container
     build: .
     image: api
-    command: npm run dev:watch
+    command: yarn dev:watch
     restart: always
     ports:
       - ${PORT}:${PORT}

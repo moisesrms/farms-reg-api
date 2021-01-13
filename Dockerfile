@@ -4,8 +4,8 @@ WORKDIR /src
 
 ADD package.json /src
 
-RUN npm i --silent
+RUN yarn install --silent
 
 ADD . /src
 
-CMD npm start
+CMD yarn start
