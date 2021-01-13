@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
+    "db:init": "npx sequelize db:migrate",
     "dev:watch": "nodemon server.js"
   },
   "dependencies": {
